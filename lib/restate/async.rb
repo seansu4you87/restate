@@ -1,5 +1,5 @@
 module Restate::Async
-  class PickupWorker
+  class TransitionWorker
   end
 
   class LeaseWorker
