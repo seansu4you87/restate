@@ -1,0 +1,3 @@
+module Restate::Command
+
+end

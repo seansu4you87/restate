@@ -1,25 +1,22 @@
+require "restate/dsl"
 require "restate/version"
 
 module Restate
-  module DB
-    class Machine; end
-    class State; end
-    class Transition; end
-    class Instance; end
-    class Log; end
-  end
-
-  module DSL
-    class State; end
-    class Transition; end
-    class Graph
-      class Node; end
-      class Edge; end
-    end
-  end
-
-  module Process
-    class PickupWorker; end
-    class LeaseWorker; end
+  class ValidatingGraph
+    # asyclic
+    # connected
   end
 end
+
+include Restate::DSL
+
+restate :transaction do
+  state :pending, :generated
+  state :generated, :signed
+  state :signed, :broadcasted
+  state :broadcasted, :confirmed
+  state :confirmed, :finalized
+  state :finalized
+end
+
+puts "hello"
